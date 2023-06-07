@@ -6,22 +6,31 @@ import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from 'jwt-decode';
 
 const dialogStyle = {
-    width: '75%',
-    height: '90%',
-    marginTop: '12%',
+    width: '70%',
+    height: '100vh', // Change height to '100vh' to make it take the maximum height of the viewport
+    marginTop: '10%',
+    marginBottom: '20px',
     maxHeight: '100%',
     maxWidth: '100%',
     boxShadow: 'none',
-    overflowY: 'hidden',
+ // Change overflowY to 'auto' to add a scrollbar when needed
     borderRadius: '3px'
-}
+  };
+  
+
+  
+  const Container = styled(Box)`
+    padding: 56px 0px 56px 56px;
+    height: 100%; // Add height: 100% to make the container take the available height
+    
+  `;
+  
 //css for material ui components
 const Component = styled(Box)`
     display:flex;  
 `
-const Container = styled(Box)`
-    padding: 56px 0px 56px 56px;
-`
+
+
 //css for html tag
 const QRCode = styled('img')({
     height: 264,
@@ -58,6 +67,7 @@ const GLogin = styled(GoogleLogin)`
   left: 50%;
   transform: translate(-50%, -50%);
 `
+
 
 const Login = () => {
 

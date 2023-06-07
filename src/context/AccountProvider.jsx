@@ -12,4 +12,4 @@ const [Account,setAccount]=useState();
     )
 }
 
-export default AccountProvider;
+export default AccountProvider; 
