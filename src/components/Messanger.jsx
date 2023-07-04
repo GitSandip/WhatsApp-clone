@@ -28,7 +28,7 @@ const Header = styled(AppBar)`
 const Messanger = () => {
 
     const { Account } = useContext(AccountContext);
-    console.log(Account)
+    // console.log(Account)
 
     return (
         <Component >

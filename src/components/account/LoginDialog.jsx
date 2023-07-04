@@ -4,10 +4,11 @@ import { AccountContext } from "../../context/AccountProvider";
 import { Dialog, Box, Typography, List, ListItem, styled } from "@mui/material";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from 'jwt-decode';
+import {addUser,getUser} from "../../service/API";
 
 const dialogStyle = {
     width: '70%',
-    height: '100vh', // Change height to '100vh' to make it take the maximum height of the viewport
+    height: '100vh',        //Change height to '100vh' to make it take the maximum height of the viewport
     marginTop: '10%',
     marginBottom: '20px',
     maxHeight: '100%',
@@ -73,10 +74,15 @@ const Login = () => {
 
 
     const {setAccount}=useContext(AccountContext);
-    const onLoginSuccess = (res) => {
+    const onLoginSuccess =async (res) => {
         const response=jwt_decode(res.credential)
-        console.log(response);
-        setAccount(response);
+        console.log("response from login react..",response);
+        // const data=new FormData();
+        // data.append('name',"sandip")
+        setAccount(response); 
+        await addUser(response);                  //not work this required body-parser and bodyparser.JSON()
+        
+
     }
     const onLoginError = (res) => {
         console.log(res);
