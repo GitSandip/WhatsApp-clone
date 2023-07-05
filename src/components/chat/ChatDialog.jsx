@@ -3,6 +3,8 @@ import {Box,Dialog,styled } from "@mui/material";
 import Menu from './menu/Menu'
 import EmptyChat from "./chat/EmptyChat";
 import ChatBox from "./chat/ChatBox";
+import { useContext } from "react";
+import { AccountContext } from "../../context/AccountProvider";
 // const Title=styled(Typography)`
 //     background-color:aquamarine;
 // `
@@ -33,7 +35,10 @@ const RComponent=styled(Box)`
      border-left: 1px solid rgb(0,0,0,0.2);
 
 `
-const chat=()=>{
+const Chat=()=>{
+
+    const { person } = useContext(AccountContext)
+
     return (
         <Dialog
         open={true}
@@ -45,8 +50,9 @@ const chat=()=>{
                 <Menu /> 
             </LComponent>
             <RComponent>
-                {/* <EmptyChat /> */}
-                <ChatBox />
+               
+                {Object.keys(person).length ? <ChatBox /> : <EmptyChat /> }
+
             </RComponent>
         </Component>
 
@@ -54,4 +60,4 @@ const chat=()=>{
     )
 }
 
-export default chat;
+export default Chat;

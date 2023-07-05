@@ -1,5 +1,7 @@
 import { Box,Typography,styled } from "@mui/material";
-
+import { useContext } from "react";
+import { AccountContext} from "../../../context/AccountProvider";
+import { setConversation } from "../../../service/API";
 const Name=styled(Typography)`
     padding-left:5px;
 `
@@ -21,8 +23,17 @@ const Wrapper = styled(Box)`
 `
 
 const Conversation=({user})=>{
+
+    const {setPerson,Account} = useContext(AccountContext);
+
+    const getUserData = async ()=>{
+       setPerson(user);
+       await setConversation({senderId: Account.sub , receiverId: user.sub})
+
+    }
+    
     return (
-        <Wrapper>
+        <Wrapper onClick={()=> getUserData()}>
             <Box>
                 <Profile src={user.picture} />
             </Box>

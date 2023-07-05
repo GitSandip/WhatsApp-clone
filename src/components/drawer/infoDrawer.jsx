@@ -14,7 +14,7 @@ const Header=styled(Box)`
     background:#008069;
     height:144px;
     display:flex;
-    color:#ffffff;
+    color:#ff;
     & > svg, & > p {
         margin-top:auto;
         padding-left:10px;
