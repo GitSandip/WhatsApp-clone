@@ -16,7 +16,7 @@ const StyledDivider=styled(Divider)`
 
 `
 
-const Conversations=()=>{ 
+const Conversations=({text})=>{ 
 
     const [users,setUsers]=useState([]);
 
@@ -25,10 +25,11 @@ const Conversations=()=>{
 
         const fetchData = async ()=>{
             let response = await getUser();
-            setUsers(response);
+            const filteredData = response.filter(user => user.name.toLowerCase().includes(text.toLowerCase())); //filter used on array rresponse and filtered each obj in arry based on conditions
+            setUsers(filteredData);
         }
         fetchData();
-    },[]);
+    },[text]);
 
     return (
         <Component>

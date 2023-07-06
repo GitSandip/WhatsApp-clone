@@ -4,7 +4,7 @@ import Search from "./Search";
 import Conversations from "./Conversations";
 import { useState } from "react";
 
-const menu =()=>{
+const Menu =()=>{
 
     const [text,setText] = useState("");
 
@@ -12,8 +12,8 @@ const menu =()=>{
         <Box>
             <Header />
             <Search setText={setText} />
-            <Conversations />
+            <Conversations text={text} />
         </Box>
     )
 }
-export default menu;
+export default Menu;
